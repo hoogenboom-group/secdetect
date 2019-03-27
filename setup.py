@@ -10,6 +10,7 @@ VERSION = '0.1.dev'
 PACKAGES = ['secdetect']
 INSTALL_REQUIRES = [
     'numpy',
+    'scipy',
     'scikit-image',
 ]
 
