@@ -3,6 +3,8 @@ import numpy as np
 from skimage.measure import ransac, CircleModel
 from skimage.util import crop
 
+__all__ = ['find_ring', 'crop_to_ring']
+
 
 def find_ring(edges, ransac_kws=None):
     """Detects sample holder ring from edges using RANSAC
