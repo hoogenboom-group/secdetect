@@ -13,7 +13,8 @@ def find_ring(edges, ransac_kws=None):
     ----------
     edges : ndarray
         Edges from e.g. Canny edge finder
-    ransac_kws : 
+    ransac_kws : dict (optional)
+        Keyword arguments for `skimage.measure.ransac`
 
     Returns
     -------
