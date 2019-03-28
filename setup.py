@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 DISTNAME = 'secdetect'
 DESCRIPTION = 'secdetect: detecting tissue sections on ITO-coated glass'
@@ -7,7 +7,10 @@ MAINTAINER_EMAIL = 'r.i.lane@tudelft.nl'
 LICENSE = 'LICENSE.txt'
 URL = 'https://github.com/lanery/secdetect'
 VERSION = '0.1.dev'
-PACKAGES = ['secdetect']
+PACKAGES = [
+    'secdetect',
+    'secdetect.data',
+]
 INSTALL_REQUIRES = [
     'numpy',
     'scipy',
@@ -22,6 +25,7 @@ if __name__ == '__main__':
         author=MAINTAINER,
         author_email=MAINTAINER_EMAIL,
         packages=PACKAGES,
+        include_package_data=True,
         url=URL,
         license=LICENSE,
         description=DESCRIPTION,
