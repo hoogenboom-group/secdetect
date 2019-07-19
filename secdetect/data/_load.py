@@ -12,8 +12,7 @@ def load(n=None):
     Parameters
     ----------
     n : int (optional)
-        Overview image number
-        (0 < n < 15) in line with image files available in `secdetect.data`
+        Overview image number available in `secdetect.data` as 'n.jpg'
         If not provided, image will be chosen randomly from `secdetect.data`
 
     Returns
@@ -22,6 +21,8 @@ def load(n=None):
         Image loaded from `secdetect.data`
     """
     if n is None:
-        n = random.randint(0, 15)
-    fn = (data_dir / f'{int(n):03}.jpg').as_posix()
+        paths = list(data_dir.glob('*.jpg'))
+        fn = random.sample(paths, 1)[0].as_posix()
+    else:
+        fn = (data_dir / f'{int(n):03}.jpg').as_posix()
     return imread(fn)
