@@ -138,11 +138,6 @@ def detect_sections_blob(image, blob_log_kws=None):
     blob_log_kws.setdefault('threshold', 0.1)
     blob_log_kws.setdefault('overlap', 0.2)
 
-    # Set default parameters for `clear_border`
-    if clear_border_kws is None:
-        clear_border_kws = {}
-    clear_border_kws.setdefault('buffer_size', 50)
-
     # Remove background
     imcr = remove_background(imin)
     # Blob analysis
