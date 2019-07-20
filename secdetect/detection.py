@@ -148,8 +148,8 @@ def detect_sections_blob(image, blob_log_kws=None):
     mask = imcb > 0
 
     # Apply mask to enhanced overview image
-    imec = secdetect.enhance_contrast(imcr, channel=2,
-                                      conv_matrix=hed_from_rgb)
+    imec = enhance_contrast(imcr, channel=2,
+                            conv_matrix=hed_from_rgb)
     masked = np.where(mask, imec, 0)
 
     # Blob analysis
