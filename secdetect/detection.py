@@ -7,11 +7,15 @@ from skimage.color import hed_from_rgb
 from .adjust import enhance_contrast
 from .ringdetect import find_ring, crop_to_ring
 
-__all__ = ['detect_sections']
+__all__ = [
+    'remove_background',
+    'detect_sections_rough',
+    'detect_sections_blob'
+]
 
 
 def remove_background(image, enhance_contrast_kws=None,
-                      canny_kws=None, find_ring_kws=None)
+                      canny_kws=None, find_ring_kws=None):
     """Remove background from optical overview image
 
     Parameters
