@@ -140,6 +140,18 @@ def detect_sections_blob(image, blob_log_kws=None):
 
     # Remove background
     imcr = remove_background(imin)
+
+    # Get rough segmentation to use as mask
+    imfz = felzenszwalb(imcr, scale=750, sigma=1,
+                        min_size=500, multichannel=True)
+    imcb = clear_border(imfz, buffer_size=50)
+    mask = imcb > 0
+
+    # Apply mask to enhanced overview image
+    imec = secdetect.enhance_contrast(imcr, channel=2,
+                                      conv_matrix=hed_from_rgb)
+    masked = np.where(mask, imec, 0)
+
     # Blob analysis
-    blobs = blob_log(imcr, **blob_log_kws)
+    blobs = blob_log(masked, **blob_log_kws)
     return blobs
