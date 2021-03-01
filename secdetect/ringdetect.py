@@ -22,7 +22,7 @@ def find_ring(edges, ransac_kws=None):
         Fitting parameters of detected circle as (cx, cy, r)
 
     References
-    -----
+    ----------
     [1] https://stackoverflow.com/a/31708007/5285918
     [2] https://stackoverflow.com/a/28287741/5285918
     """
