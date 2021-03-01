@@ -80,7 +80,7 @@ def enhance_contrast(image, clip=True, pct=1, channel=None, conv_matrix=None):
     image : ndarray
         Input image
     clip : bool
-        Whether to apply clip intensity levels
+        Whether to clip the intensity levels
     pct : scalar
         Percentage by which to clip intensity
     channel : int (or None)
