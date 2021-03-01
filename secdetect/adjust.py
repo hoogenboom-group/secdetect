@@ -5,7 +5,10 @@ from skimage.exposure import rescale_intensity
 from skimage.color import separate_stains
 from skimage.transform import rescale
 
-__all__ = ['scale', 'clip_intensity', 'enhance_contrast']
+
+__all__ = ['scale',
+           'clip_intensity',
+           'enhance_contrast']
 
 
 def scale(image, scale_src, scale_tgt=10, rescale_kws=None):
