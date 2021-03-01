@@ -14,7 +14,7 @@ $ (secdetect) jupyter labextension install jupyter-matplotlib
 $ (secdetect) jupyter nbextension enable --py widgetsnbextension
 ```
 
-1. Install secdetect from github repo
+2. Install secdetect from github repo
 ```
 $ (secdetect) pip install git+https://github.com/lanery/secdetect.git
 ```
