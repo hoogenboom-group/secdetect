@@ -3,9 +3,9 @@
 Small package for detecting tissue sections on ITO-coated glass
 
 ### Installation
-1. Vastly overcomplicated and yet highly recommended environment setup with conda
+1. Vastly overcomplicated but highly recommended environment setup with conda
 ```
-$ conda create -n secdetect matplotlib jupyterlab
+$ conda create -n secdetect matplotlib jupyterlab shapely
 $ conda activate secdetect
 $ (secdetect) conda install -c conda-forge nodejs=15
 $ (secdetect) pip install tqdm ipympl ipywidgets
