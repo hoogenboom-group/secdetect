@@ -18,3 +18,18 @@ $ (secdetect) jupyter nbextension enable --py widgetsnbextension
 ```
 $ (secdetect) pip install git+https://github.com/lanery/secdetect.git
 ```
+
+### Getting started guide
+See `secdetect/notebooks/example.ipynb`
+
+### Other resources for segmentation
+* [scikit-image segmentation examples](https://scikit-image.org/docs/stable/auto_examples/#segmentation-of-objects)
+  * [Watershed segmentation](https://scikit-image.org/docs/stable/auto_examples/segmentation/plot_watershed.html#sphx-glr-auto-examples-segmentation-plot-watershed-py)
+  * [Comparison of segmentation and superpixel algorithms](https://scikit-image.org/docs/stable/auto_examples/segmentation/plot_segmentations.html#sphx-glr-auto-examples-segmentation-plot-segmentations-py)
+  * [Segmenting human cells in mitosis](https://scikit-image.org/docs/stable/auto_examples/applications/plot_human_mitosis.html#sphx-glr-auto-examples-applications-plot-human-mitosis-py)
+
+* [ilastik](https://www.ilastik.org/)
+*  [Download](https://www.ilastik.org/download.html)
+
+* [DigitalSreeni's youtube channel](https://www.youtube.com/channel/UC34rW-HtPJulxr5wp2Xa04w/featured)
+  * 
