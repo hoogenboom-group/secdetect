@@ -19,7 +19,7 @@ $ (secdetect) jupyter nbextension enable --py widgetsnbextension
 $ (secdetect) pip install git+https://github.com/lanery/secdetect.git
 ```
 
-### Getting started guide
+### Getting started
 See `secdetect/notebooks/example.ipynb`
 
 ### Other resources for segmentation
@@ -29,7 +29,10 @@ See `secdetect/notebooks/example.ipynb`
   * [Segmenting human cells in mitosis](https://scikit-image.org/docs/stable/auto_examples/applications/plot_human_mitosis.html#sphx-glr-auto-examples-applications-plot-human-mitosis-py)
 
 * [ilastik](https://www.ilastik.org/)
-*  [Download](https://www.ilastik.org/download.html)
+  * [Download](https://www.ilastik.org/download.html)
+  * [Object classification workflow](https://www.ilastik.org/documentation/objects/objects)
 
 * [DigitalSreeni's youtube channel](https://www.youtube.com/channel/UC34rW-HtPJulxr5wp2Xa04w/featured)
-  * 
+  * [Image segmentation using K-means](https://www.youtube.com/watch?v=6CqRnx6Ic48&t=461s&ab_channel=DigitalSreeni)
+  * [Image segmentation using traditional machine learning](https://www.youtube.com/watch?v=OUCwt8loM6s&ab_channel=DigitalSreeni) (part 1 in a series)
+  * [Image segmentation using U-net](https://www.youtube.com/watch?v=azM57JuQpQI&ab_channel=DigitalSreeni) (part 1 in a series)
