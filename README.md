@@ -16,7 +16,7 @@ $ (secdetect) jupyter nbextension enable --py widgetsnbextension
 
 2. Install secdetect from github repo
 ```
-$ (secdetect) pip install git+https://github.com/lanery/secdetect.git
+$ (secdetect) pip install git+https://github.com/hoogenboom-group/secdetect.git
 ```
 
 ### Getting started
@@ -34,5 +34,5 @@ See `secdetect/notebooks/example.ipynb`
 
 * [DigitalSreeni's youtube channel](https://www.youtube.com/channel/UC34rW-HtPJulxr5wp2Xa04w/featured)
   * [Image segmentation using K-means](https://www.youtube.com/watch?v=6CqRnx6Ic48&t=461s&ab_channel=DigitalSreeni)
-  * [Image segmentation using traditional machine learning](https://www.youtube.com/watch?v=OUCwt8loM6s&ab_channel=DigitalSreeni) (part 1 in a series)
-  * [Image segmentation using U-net](https://www.youtube.com/watch?v=azM57JuQpQI&ab_channel=DigitalSreeni) (part 1 in a series)
+  * [Image segmentation using traditional machine learning](https://www.youtube.com/watch?v=OUCwt8loM6s&ab_channel=DigitalSreeni)
+  * [Image segmentation using U-net](https://www.youtube.com/watch?v=azM57JuQpQI&ab_channel=DigitalSreeni)
