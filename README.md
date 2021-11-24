@@ -1,28 +1,36 @@
 # secdetect
 
-Small package for detecting tissue sections on ITO-coated glass
+Small package for segmenting serial sections from light microscopy images
+
 
 ### Installation
-1. Vastly overcomplicated but highly recommended environment setup with conda
+
+1. Create conda environment (assumes [anaconda](https://www.anaconda.com/products/individual) or [miniconda](https://docs.conda.io/en/latest/miniconda.html#) distribution already installed)
 ```
-$ conda create -n secdetect matplotlib jupyterlab shapely
+$ conda create -n secdetect numpy scikit-image shapely
 $ conda activate secdetect
-$ (secdetect) conda install -c conda-forge nodejs=15
+```
+
+2. Install `secdetect` from github repo
+```
+$ (secdetect) pip install git+https://github.com/hoogenboom-group/secdetect.git
+```
+
+3. (Optional) Vastly overcomplicated but highly recommended environment setup with conda
+```
+$ (secdetect) conda install -c conda-forge matplotlib jupyterlab nodejs=15
 $ (secdetect) pip install tqdm ipympl ipywidgets
 $ (secdetect) jupyter labextension install @jupyter-widgets/jupyterlab-manager
 $ (secdetect) jupyter labextension install jupyter-matplotlib
 $ (secdetect) jupyter nbextension enable --py widgetsnbextension
 ```
 
-2. Install secdetect from github repo
-```
-$ (secdetect) pip install git+https://github.com/hoogenboom-group/secdetect.git
-```
 
 ### Getting started
 See `secdetect/notebooks/example.ipynb`
 
-### Other resources for segmentation
+
+### Other resources for image segmentation
 * [scikit-image segmentation examples](https://scikit-image.org/docs/stable/auto_examples/#segmentation-of-objects)
   * [Watershed segmentation](https://scikit-image.org/docs/stable/auto_examples/segmentation/plot_watershed.html#sphx-glr-auto-examples-segmentation-plot-watershed-py)
   * [Comparison of segmentation and superpixel algorithms](https://scikit-image.org/docs/stable/auto_examples/segmentation/plot_segmentations.html#sphx-glr-auto-examples-segmentation-plot-segmentations-py)
