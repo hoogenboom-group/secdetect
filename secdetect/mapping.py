@@ -4,15 +4,42 @@ from shapely import affinity
 from shapely.geometry import box
 
 
-__all__ = ['find_minimum_bounding_rectangle']
+__all__ = ['find_minimum_bounding_rectangle',
+           'generate_tiles']
 
 
-def generate_tiles(section, field_width, overlap):
+def generate_tiles(section, field_width, overlap=20, offset=0,
+                   field_width_subtiles=None):
+    """Generate correlative image tiles for acquiring a section
+
+    Parameters
+    ----------
+    section : `RegionProperties`
+        Instance from running `measure.regionprops` on a labelled image
+    field_width : scalar
+        Horizontal (and vertical) field width of an individual tile in pixels
+    overlap : scalar
+        Percent overlap of tiles
+    offset : scalar (optional)
+        Offset of 
+        1/4 * field_width by default
+    field_width_subtiles : scalar (optional)
+        Horizontal (and vertical) field width in pixels
+        Subtiles not generated if not provided
+
+    Returns
+    -------
+    tiles : list
+        List of tiles as `shapely.Polygon` objects
+    subtiles : list (optional)
+        List of subtiles as `shapely.Polygon` objects
+    """
 
     # Aliases
     w = field_width
     o = overlap
-    w_sub = w - 2*o*w
+    w_sub = field_width_subtiles if field_width_subtiles is not None \
+                                 else w - 2*o*w
 
     # Convert section coordinates to x, y points
     points = section.coords[:, ::-1]  # row, col --> x, y
@@ -25,13 +52,19 @@ def generate_tiles(section, field_width, overlap):
     x4, y4 = rect[3]  # bottom-most vertex
 
     # Calculate rotation
-    theta = np.arctan2(y2-y3, x2-x3) + np.pi/2
+    theta = np.arctan2(y2-y3, x2-x3)
+    # Keep rotation between (-45°, 45°)
+    theta += np.pi/2 if theta < -np.pi/4 else 0
 
     # Calculate tiling stuff
-    L = np.sqrt((x1-x2)**2 + (y1-y2)**2)
-    H = np.sqrt((x3-x2)**2 + (y3-y2)**2)
-    Nx = int(np.ceil((L-o*w)/(w-o*w))) + 1
-    Ny = int(np.ceil((H-o*w)/(w-o*w))) + 1
+    if theta > 0:  # (x1, y1) is bottom right corner
+        L = np.sqrt((x1-x2)**2 + (y1-y2)**2) + offset
+        H = np.sqrt((x4-x1)**2 + (y4-y1)**2) + offset
+    else:  # (x1, y1) is top right corner
+        L = np.sqrt((x4-x1)**2 + (y4-y1)**2) + offset
+        H = np.sqrt((x1-x2)**2 + (y1-y2)**2) + offset
+    Nx = int(np.ceil((L-o*w)/(w-o*w)))
+    Ny = int(np.ceil((H-o*w)/(w-o*w)))
 
     # Tiles
     ii, jj = np.meshgrid(np.arange(Nx), np.arange(Ny))
@@ -40,8 +73,10 @@ def generate_tiles(section, field_width, overlap):
     for i, j in zip(ii.ravel(), jj.ravel()):
 
         # Tile center points
-        x = x2 + i*w*(1-o)*np.cos(theta) - j*w*(1-o)*np.sin(theta)
-        y = y2 + j*w*(1-o)*np.cos(theta) + i*w*(1-o)*np.sin(theta)
+        x0, y0 = (x3, y3) if theta >= 0 else (x4, y4)
+        x0, y0 = x0+w/4, y0-w/4
+        x = x0 + i*w*(1-o)*np.cos(theta) + j*w*(1-o)*np.sin(theta)
+        y = y0 - j*w*(1-o)*np.cos(theta) + i*w*(1-o)*np.sin(theta)
 
         # Create tiles as `shapely.box` objects and rotate
         tile = box(x-w/2, y-w/2, x+w/2, y+w/2)
